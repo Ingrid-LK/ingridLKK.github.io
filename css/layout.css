@@ -166,11 +166,14 @@ body {
       width: calc((100% - 16px) / 2);
     }
 
+  
+
     .gallery-image {
       width: 100%;
       height: auto;
     }
 
+  
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
@@ -219,5 +222,15 @@ body {
   }
 }
 
+#image-centered{
+  text-align: center;
+   display: block;
+  margin: auto;
+  width: 50%;;
+}
 
 
+/*spacing in list elements*/
+li {
+  margin: 10px 0;
+}
