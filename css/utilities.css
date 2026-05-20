@@ -75,6 +75,10 @@ a.button:hover {
   cursor: pointer;
 }
 
+a.button#links {
+    color: burlywood;
+}
+
 
 /* Footer Styling */
 
