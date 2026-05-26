@@ -188,6 +188,24 @@
       </div>
     </div>
 
+
+    <div id="project-details">
+        <div class="subheader-text">Improvements</div>
+        <div class="project-details-content">
+          <div class="body-text"> 
+            
+Serial communication has limited capabilities and is best suited for quick deployment and debugging purposes. To avoid local development, a modular solution could be implemented. Instead of using  XAMPP for database connection and running Node-RED locally, a containerized solution such as docker could be implemented, by that increasing the robustness of the system.
+
+          </div>
+
+
+          <div class="body-text"> 
+            
+Another major improvement would be creating a fault-finding mechanism. This would enable the system to detect hardware faults and trigger an alarm if a component is damaged or an intended transition does not occur. For instance, in the case of the LEDs, a photoresistor could be used to verify whether the LED output is functioning correctly. Alternatively, the code could include a validation routine to ensure that each transition aligns with the intended outcome.             
+          </div>
+
+
+
     <!-- FOOTER -->
     <div id="footer">
      
