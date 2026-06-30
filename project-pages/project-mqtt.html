@@ -1,27 +1,10 @@
 
 
-<!-- 
-  IMPORTANT! 
-  
-  Keep this file unchanged to use as a template for all future project pages. 
-
-  For every new project you add to your portfolio, make a copy of this file in the
-  'project-pages' folder with a name related to the project.
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
     <!-- 
-      TODO
-
-      Upload your Unemployable (or whatever photo you like) to the assets/images folder
-      and change the name of the image below to match the uploaded one
-
-      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
-
       This should be the same across all pages.
      -->
      <link rel="icon" href="../assets/images/4539.jpg" />
@@ -105,9 +88,192 @@
           <div class="body-text">This project aims to explore the MQTT protocol by using it to enable communication between devices and services for actuator control and real-time monitoring. The system is inspired by the automated control of a greenhouse used for growing plants and vegetables. Different sensors and actuators are employed to create two independent control sections that together make up the complete system:</div>
         </div>
         <div class="project-overview-image-container">
-              <img src="../assets/images/project_1/Project_Overview.png" class="gallery-image">
+              <img src="../assets/images/project_2/Station-division.png" class="gallery-image">
             </div>
       </div>
+
+
+
+  <div id="project-details">
+        <div class="subheader-text">System Architecture </div>
+        <div class="project-details-content">
+          <div class="project-overview-image-container">
+              <img src="../assets/images/project_1/Project_Overview.png" class="gallery-image">
+            
+            </div>
+
+
+             <div class="project-overview-image-container">
+              <img src="../assets/images/project_1/Project_Overview.png" class="gallery-image">
+            </div>
+
+                  <a class="links" href="https://github.com/Ingrid-LK/SENSOR_STATION" target="_blank">GitHub REPOSITORY</a>
+        </div>
+
+    <ul>
+            <li><b>MQTT BROKER</b></li>
+            <div class="project-details-content">
+    <div class="body-text">An MQTT message broker is a central component that enables communication between clients and IoT devices using the MQTT protocol. It follows the publish-subscribe (pub/sub) messaging model: the broker receives messages from publishers, verifies their publishing rights, and queues messages according to their Quality of Service (QoS) levels. It further identifies authorised subscribers and routes them to appropriate subscribers. 
+       </div>
+    
+       <div class="body-text">This project comprises a self-hosted, open-source MQTT broker. The broker used is Eclipse Mosquitto, which provides a lightweight implementation of the MQTT protocol suitable for a wide range of devices, from full-powered computers to embedded and low-power systems. Hosting the MQTT broker on a Raspberry Pi creates a local messaging hub for IoT projects, more than capable of handling the communication requirements of a small-scale system. This approach gives the user full control over the exchanged data while providing near-instantaneous communication between connected devices.
+       </div>
+ </div> 
+
+
+           <li><b>DOCKER</b></li>
+            <div class="project-details-content">
+            <div class="body-text">Docker was used to guarantee consistency throughout the development of the project, as containers provide a standardized and isolated execution environment, reducing dependency, compatibility, and configuration issues. Process isolation ensures that applications running inside a container are independent of the host system and other containers. Furthermore, containerization promotes reproducibility by allowing the project to be rebuilt and executed in the future with the same software environment and behaviour, regardless of changes to the host machine or its installed software.</div>
+            <div class="body-text">Docker makes building systems enjoyable. Rather than thinking about installing the right dependencies or software, the focus shifts entirely to composing a system from independent services that work together. The emphasis is entirely in designing an architecture.</div>
+          </div>
+
+
+
+
+
+        <li><B>Node-RED → InfluxDB → GRAFANA</B></li>
+        <div class="project-details-content">
+            <div class="body-text">Node-RED was selected as the middleware due to its straightforward integration with MQTT through its built-in MQTT nodes, allowing easy publishing and subscribing to topics. It processes MQTT messages in real time and provides a visual, flow-based environment for implementing the  system logic. Since MQTT payloads are already received in JSON format, the data can be easily transformed for storage in InfluxDB using function and http request nodes, eliminating the need for additional middleware such as Telegraf. Consequently, Node-RED was used as the central platform for data preparation, data processing, and the implementation of additional system control functions.</div>
+        
+            <div class="body-text">InfluxDB was chosen due to its high efficiency in storing and querying time-series data, making it well suited for dealing with sensor data. It's commonly used in IoT data management, real-time analytics, and other scenarios where large volumes of time-stamped data need to be processed and analysed. </div>
+            
+            <div class="body-text">InfluxDB provides a native HTTP Write API. Since the available Node-RED nodes do not support the  version of  InfluxDB used in this project (version 3), data was written from Node-RED to InfluxDB by sending HTTP POST requests to the <B><i> /api/v2/write </i> </B> endpoint.</div>
+
+            <div class="body-text">Grafana is an open-source platform ideal for monitoring systems, visualizing metrics, and creating interactive dashboards. It's widely used in DevOps, IT infrastructure monitoring, and application performance management due to its ability to aggregate data from multiple sources. </div>
+
+
+          </div>
+
+        
+    </ul>
+      
+
+      </div>
+
+
+
+
+ <div id="project-details">
+        <div class="subheader-text">CONTROL LOGIC</div>
+        <div class="project-details-content">
+          <div class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique risus nec feugiat in fermentum. Sed id semper risus in hendrerit gravida. Placerat duis ultricies lacus sed. Id neque aliquam vestibulum morbi blandit cursus risus. Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vitae congue mauris rhoncus aenean vel elit.</div>
+        </div>
+                  <div class="body-text">      
+<b>Security</b>
+          </div>
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+
+                              <div class="body-text">      
+<b>Security 2 </b>
+          </div>
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+
+
+                  <div class="body-text">      
+<b>Security 3 </b>
+          </div>
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+
+
+<div class="body-text">   
+<b>ESP32 AS MQTT CLIENT </b>
+</div>
+
+    <div class="body-text"> 
+            
+When configuring the ESP32 as an MQTT client, the main objective was to establish a connection using the configuration options provided by the open source <B><I>PubSubClient</I></B> library in a way that resembles a basic professional MQTT setup. Therefore, in addition to configuring a broker with user authentication, the ESP32 was also configured to use retained messages, a Last Will and Testament (LWT), and an appropriate Quality of Service (QoS) level.          </div>
+
+
+              <div class="body-text"> 
+            
+Retained messages were enabled so that newly subscribed clients immediately receive the latest known value of a topic instead of waiting for the next update. In an industrial setting, it is often important to know the current state of a system as soon as a connection is established. For example, if a monitoring application connects to the broker, it should instantly know whether a pump is running or whether a tank level is low, rather than waiting for the next sensor reading to be published.          </div>
+
+
+              <div class="body-text"> 
+            
+To complement this behaviour, the <b><I>Clean Session</I></b> parameter was set to <B>false</B>, creating a persistent session. This allows the broker to preserve the client's subscriptions and queue QoS 1 messages while the client is offline, delivering them once the connection is re-established.          </div>
+
+
+              <div class="body-text"> 
+            
+Since communication failures and power issues are inevitable in real systems, <b> Last Will and Testament (LWT)</b> feature was also configured. If the ESP32 unexpectedly loses power or crashes, the broker automatically publishes a predefined message indicating that the device disconnected unexpectedly. This provides a simple but effective layer of fault detection, allowing other clients to react appropriately.          
+</div>
+
+        <div class="body-text"> 
+            
+Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT provides three Quality of Service levels—QoS 0 (at most once), QoS 1 (at least once), and QoS 2 (exactly once). QoS 1 is generally the preferred choice for many IoT and industrial applications because it guarantees message delivery while avoiding the additional network traffic and memory usage associated with QoS 2</div>
+
+
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+      </div>
+
+
+
+
+          <div id="project-details">
+        <div class="subheader-text">NODE-RED USER CONTROL INTERFACE </div>
+        <div class="project-details-content">
+          <div class="body-text">
+            <ol type="a">
+                  <li>Control mode switch (OFF = Manual, ON = Auto)</li>
+                  <li>Manual actuator control</li>
+                  <li>Client connection status (LWT messages from both the ESP32 and Node-RED are displayed here).</li>
+                  <li>ESP32 controlled actuators status</li>
+                  <li>Alarm acknowledgment status</li>
+                  <li>Alarm acknowledgment switch (show/hide alarms)</li>
+          </ol>
+          </div>
+            <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+          
+          
+        </div>
+      </div>
+          </div>
+
+
+
+
+
+
+
+          <div id="project-details">
+        <div class="subheader-text">GRAFANA MONITORING DASHBOARD </div>
+        <div class="project-details-content">
+          <div class="body-text">
+            <ol type="a">
+                  <li>Humidity (DHT22)</li>
+                  <li>Light intensity (mapped photoresistor value)</li>
+                  <li>Temperature (LM35)</li>
+                  <li>Fan history</li>
+                  <li>Fan status and control mode</li>
+                  <li>Tank water level</li>
+                  <li>Soil moisture status</li>
+                  <li>Pump history</li>
+                  <li>Pump status and control mode</li>
+          </ol>
+          </div>
+            <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+          
+          
+        </div>
+      </div>
+          </div>
 
 
 
@@ -124,41 +290,17 @@
       </div>
 
 
-
-
-
-
-
-
+       </div>
+       
+  
 
       <!-- IMAGE GALLERY -->
       <div id="project-gallery">
         <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
         <div class="subheader-text">Image Gallery</div>
         <div class="project-gallery-content">
-            <!-- 
-              TODO
-
-              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
-
-              Full Width Image:
-
-                <div class="gallery-image-container">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              Half Width Image: 
-
-                <div class="gallery-image-container half-width">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
-                  - IMAGE_NAME: the name of the image file in assets/images
-                  - IMAGE_CAPTION: to the caption of the image
-            -->
+       
+          
             <div class="gallery-image-container half-width">
               <img src="../assets/images/code.jpeg" class="gallery-image">
               <span class="image-caption">Give your image a caption. People love context.</span>
@@ -173,7 +315,8 @@
             </div>
         </div>
       </div>
-    </div>
+      
+  
 
 
 
@@ -183,17 +326,59 @@
   <div id="project-details">
         <div class="subheader-text">Improvements</div>
         <div class="project-details-content">
-          <div class="body-text"> 
-            
-Serial communication has limited capabilities and is best suited for quick deployment and debugging purposes. To avoid local development, a modular solution could be implemented. Instead of using  XAMPP for database connection and running Node-RED locally, a containerized solution such as docker could be implemented, by that increasing the robustness of the system.
-
+          <div class="body-text">      
+<b>TLS Encryption </b>
           </div>
 
+<div class="body-text">             
+Username and password authentication stops unauthorized clients from connecting, but it doesn't protect the data itself. Anyone on the same Wi-Fi could intercept and read that traffic. To prevent this, TLS encryption must be enabled. This involves generating certificates (or using a free service) and pointing to them in the configuration file. This closes the gap between "authenticated" and "actually secure."          </div>
 
-          <div class="body-text"> 
-            
-Another major improvement would be creating a fault-finding mechanism. This would enable the system to detect hardware faults and trigger an alarm if a component is damaged or an intended transition does not occur. For instance, in the case of the LEDs, a photoresistor could be used to verify whether the LED output is functioning correctly. Alternatively, the code could include a validation routine to ensure that each transition aligns with the intended outcome.             
+
+<div class="body-text">      
+<b>Two-Way Alarm Acknowledgement</b>
           </div>
+        
+<div class="body-text">             
+Right now, acknowledging an alarm only updates the dashboard, there is no message being sent to the other components of the system. A proper fix sends an acknowledgement message back to ESP32, so the alarm state clears at the source instead of persisting indefinitely after it's been handled.          </div>
+      
+<div class="body-text">      
+<b>Logging Alarm Events to a Database</b>
+          </div>
+        
+<div class="body-text">             
+By storing each alarm trigger as a database entry, isolated events become a dataset that can later be analyzed to identify recurring patterns and alarm frequency, particularly in more complex systems.          </div>
+
+
+          <div class="body-text">      
+<b>Analog Over Digital Sensing</b>
+          </div>
+        
+<div class="body-text">             
+A digital water level sensor only indicates whether water is present or absent. Using an analog water level sensor instead would provide continuous measurements, enabling more nuanced conditions, smarter evaluations, and more meaningful monitoring.          </div>
+
+
+          <div class="body-text">      
+<b>Error Handling</b>
+          </div>
+        
+<div class="body-text">             
+The system currently relies on the ESP32's reconnect loop, feedback check when Node-RED writes to InfluxDB and Node-Red debug nodes to observe received messages, which, although minimal, provides a functional level of error detection. As more sensors and actuators are added, identifying faulty behaviour becomes increasingly difficult without a clear baseline. Defining expected value ranges for each sensor during isolated testing and flagging out-of-range readings through the serial monitor or Node-RED's Debug panel would make troubleshooting faster and less reliant on guesswork.          </div>
+  
+  
+  
+        </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
            <div id="project-details">
@@ -212,10 +397,11 @@ Another major improvement would be creating a fault-finding mechanism. This woul
 </ol>
 
           </div>
+        </div>
     
 
 
-
+ 
  <!-- FOOTER -->
     <div id="footer">
      
