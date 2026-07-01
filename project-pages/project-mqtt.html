@@ -4,6 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"> <!--js script viewer related-->
     <!-- 
       This should be the same across all pages.
      -->
@@ -18,6 +19,10 @@
 
 		<script defer src="../js/script.js"></script>
 	</head>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script> <!--js viewer related-->
+
 	<body>
     <!-- NAVBAR -->
     <div class="navbar">
@@ -98,13 +103,25 @@
         <div class="subheader-text">System Architecture </div>
         <div class="project-details-content">
           <div class="project-overview-image-container">
+             <a href="../assets/images/project_2/project_2_overview.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
               <img src="../assets/images/project_2/project_2_overview.svg" class="gallery-image">
-            
+             </a>
             </div>
 
 
              <div class="project-overview-image-container">
+              
+
+ <a href="../assets/images/project_2/MQTT_PROJ.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="ESP32 -- SENSORS - ACTUATORS SCHEMATICS">
+
               <img src="../assets/images/project_2/MQTT_PROJ.svg" class="gallery-image">
+ </a>
             </div>
 
                   <a class="links" href="https://github.com/Ingrid-LK/SENSOR_STATION" target="_blank">GitHub REPOSITORY</a>
@@ -156,22 +173,36 @@
  <div id="project-details">
         <div class="subheader-text">CONTROL LOGIC</div>
         <div class="project-details-content">
-          <div class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique risus nec feugiat in fermentum. Sed id semper risus in hendrerit gravida. Placerat duis ultricies lacus sed. Id neque aliquam vestibulum morbi blandit cursus risus. Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vitae congue mauris rhoncus aenean vel elit.</div>
+          <div class="body-text">The following flowcharts illustrate how each system section (environment and watering station) operates in both manual and automatic control modes.</div>
         </div>
-                  <div class="body-text">      
-<b>Security</b>
-          </div>
+   
            <div id="image-centered">
-              <img src="../assets/images/project_2/FAN-CONTROL.svg" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
+
+
+
+            <a href="../assets/images/project_2/FAN-CONTROL-LOGIC.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Environment Station Control Flowchart">
+
+              <img src="../assets/images/project_2/FAN-CONTROL-LOGIC.svg" class="gallery-image">
+              
+            </a>
+              <span class="image-caption">Environment Station Control Flowchart.</span>
             </div>
 
-                              <div class="body-text">      
-<b>Security 2 </b>
-          </div>
+    
            <div id="image-centered">
+
+            <a href="../assets/images/project_2/PUMP-CONTROL-LOGIC.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Watering Station Control Flowchart">
+
               <img src="../assets/images/project_2/PUMP-CONTROL-LOGIC.svg" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
+              
+            </a>
+              <span class="image-caption">Watering Station Control Flowchart.</span>
             </div>
 
 
@@ -179,8 +210,15 @@
 <b>ESP32 CONTROL PROGRAM </b>
           </div>
            <div id="image-centered">
+
+            <a href="../assets/images/project_2/CONTROL_LOOP_ESP32.drawio.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="ESP32 CONTROL LOOP LOGIC">
+
               <img src="../assets/images/project_2/CONTROL_LOOP_ESP32.drawio.svg" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </a>
+              <span class="image-caption">ESP32 CONTROL LOOP LOGIC.</span>
             </div>
                <div class="body-text"> 
             
@@ -239,8 +277,18 @@ Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT pro
           </ol>
           </div>
             <div id="image-centered">
+
+
+<a href="../assets/images/project_2/NODE_RED_DSH.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Node-RED Dashboard">
+
               <img src="../assets/images/project_2/NODE_RED_DSH.png" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
+          
+
+</a>
+              <span class="image-caption">Node-RED Dashboard for user control.</span>
           
           
         </div>
@@ -269,21 +317,36 @@ Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT pro
                   <li>Pump status and control mode</li>
           </ol>
           </div>
-            <div id="image-centered">
+
+
+ <div id="image-centered">
+
+           <a href="../assets/images/project_2/GRAFANA_DSH.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Grafana Dashboard">
+
               <img src="../assets/images/project_2/GRAFANA_DSH.png" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
-          
-          
-        </div>
+
+              </a>
+               
+              <!--add js to make image zoom in and out-->
+              <span class="image-caption">Grafana Dashboard.</span>
+      
       </div>
-          </div>
+
+
+        </div>
+          </div> <!--project details-->
+        
+          
 
 
 
 
 
 
-
+<!---
          <div id="project-details">
         <div class="subheader-text">Project Details / Background</div>
         <div class="project-details-content">
@@ -291,7 +354,7 @@ Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT pro
           <div class="body-text">Vitae justo eget magna fermentum. Imperdiet nulla malesuada pellentesque elit eget gravida. Aliquet nec ullamcorper sit amet. Aliquet sagittis id consectetur purus. Ac tortor dignissim convallis aenean. Enim neque volutpat ac tincidunt vitae. Lobortis feugiat vivamus at augue. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Viverra orci sagittis eu volutpat. Massa tincidunt nunc pulvinar sapien et ligula. Donec enim diam vulputate ut.</div>
         </div>
       </div>
-
+--->
 
        </div>
        
@@ -300,7 +363,7 @@ Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT pro
       <!-- IMAGE GALLERY -->
       <div id="project-gallery">
         <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text">Image Gallery</div>
+        <div class="subheader-text">MEDIA GALLERY</div>
         <div class="project-gallery-content">
        
           
@@ -312,10 +375,47 @@ Finally,  <b> QoS 1</b> was chosen for both publishing and subscribing. MQTT pro
               <img src="../assets/images/sketchbook.jpeg" class="gallery-image">
               <span class="image-caption">Give your image a caption. People love context.</span>
             </div>
+
+
             <div class="gallery-image-container">
+               <a href="../assets/images/project_2/side_by_side_with_alarm.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Node-RED AND GRAFANA">
+              <img src="../assets/images/project_2/side_by_side_with_alarm.png" class="gallery-image">
+               </a>
+              <span class="image-caption">Node-RED and Grafana dashboards side by side with a manual mode alarm active.</span>
+            </div>
+
+
+        <div class="gallery-image-container">
+               <a href="../assets/images/project_2/side_by_side_without_alarm.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Node-RED AND GRAFANA">
+              <img src="../assets/images/project_2/side_by_side_without_alarm.png" class="gallery-image">
+               </a>
+              <span class="image-caption">Node-RED and Grafana dashboards side by side with no alarm active.</span>
+            </div>
+
+
+                <div class="gallery-image-container">
+               <a href="../assets/images/project_2/GRAFANA_DSH.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Grafana Dashboard">
               <img src="../assets/images/camera.jpeg" class="gallery-image">
+               </a>
               <span class="image-caption">Give your image a caption. People love context.</span>
             </div>
+
+
+
+
+
+
+
+
         </div>
       </div>
       
@@ -420,8 +520,14 @@ The system currently relies on the ESP32's reconnect loop, feedback check when N
     </div>
 
 
-
-
+<!---initialize js script that allows zoom control of pictures-->
+<script>
+const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: false,
+    zoomable: true
+});
+</script>
 
 	</body>
 </html>
