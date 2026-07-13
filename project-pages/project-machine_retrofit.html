@@ -59,11 +59,11 @@
              <a href="../assets/images/project_machine/machine_TBG480.png"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="Frozen Meat Guillotine Machine">
               <img src="../assets/images/project_machine/machine_TBG480.png" class="gallery-image">
              </a>
-             <span class="image-caption">Schematics of the relay used in the project.</span>
             </div>
+             <span class="image-caption">  <i>Source:<a class="inlinelinks"   href="https://www.fatosa.com/idiomes/eng/detalls/t2.html" target="_blank">Fatosa.</a></i> </a>  </span> 
 
       </div>
 
@@ -73,9 +73,9 @@
 
 
 <div id="project-details">
-        <div class="subheader-text">Context</div>
+        <div class="subheader-text">Project Background</div>
         <div class="project-details-content">
-          <div class="body-text"> The client's frozen meat guillotine was controlled by an aging hardwired logic system that had become increasingly unreliable. Frequent failures caused significant production downtime, as operators often had to power-cycle the control panel to restore operation. In addition to replacing the aging electrical components, the client requested a new feature to stop the guillotine at a fixed position after each cycle. To meet these requirements while keeping costs low, an economical solution based on a Cimon CM2 PLC was implemented.
+          <div class="body-text"> The client's frozen meat guillotine was controlled by an aging hardwired logic system that had become increasingly unreliable. Frequent failures caused significant production downtime, as operators often had to power-cycle the control panel to restore operation. In addition to replacing the aging electrical components, the client requested a new feature to stop the guillotine at a fixed position after each cycle. To meet these requirements while keeping costs low, an economical solution based on a CIMON CM2 PLC was implemented.
           </div>
         </div>
       </div>
@@ -100,6 +100,67 @@
 
 
 
+<div id="project-details">
+        <div class="subheader-text">Circuit To Be Controlled</div>
+        <div class="project-details-content">
+          <div class="body-text"> The figures below show the inside of a similar machine. The main components visible are the hydraulic reservoir, hydraulic cylinder, and electrical control panel, along with the remaining hydraulic and mechanical components that make up the system. Although the machine itself is fairly complex, from the PLC's perspective the retrofit essentially comes down to controlling a single hydraulic cylinder through an electro-hydraulic circuit. 
+          </div>
+
+
+              <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="subheader-text"></div>
+        <div class="project-gallery-content">
+       
+          
+            <div class="gallery-image-container half-width">
+      
+             <a href="../assets/images/project_machine/machine_reservoir_view.jpg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Machine Interior">
+              <img src="../assets/images/project_machine/machine_reservoir_view.jpg" class="gallery-image">
+  </a>
+              <span class="image-caption">Side View of the Machine Interior. <i>Source:<a class="inlinelinks"   href="https://mecal-sa.com/en/frozen-block-cutters/1305-magurit-fromat-frozen-block-guillotine.html" target="_blank">MELCASA.</a></i></span>
+           
+
+            </div>
+            
+            
+            
+            <div class="gallery-image-container half-width">
+               <a href="../assets/images/project_machine/machine_cylinder_view.jpg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Machine Interior">
+              <img src="../assets/images/project_machine/machine_cylinder_view.jpg" class="gallery-image">
+               </a>
+              <span class="image-caption">Another Side View of the Machine Interior. <i>Source:<a class="inlinelinks"   href="https://mecal-sa.com/en/frozen-block-cutters/1305-magurit-fromat-frozen-block-guillotine.html" target="_blank">MELCASA.</a></i></span>
+            </div>
+
+
+          <div class="body-text"> The hydraulic cylinder drives the guillotine blade, while the PLC controls its movement by energizing the solenoids of a directional control valve. The simplified diagram below shows the circuit that was implemented. 
+          </div>
+
+     <div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/FLUID_DIAGRAM.drawio.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Simplified Representation of the Machine's Electro-Hydraulic Circuit">
+              <img src="../assets/images/project_machine/FLUID_DIAGRAM.drawio.svg" class="gallery-image">
+             </a>
+            </div>
+              <span class="image-caption">Simplified Representation of the Machine's Electro-Hydraulic Circuit.</span>
+
+
+
+<div class="body-text"> One important detail is the use of a <b>4/2 double-solenoid directional control valve with mechanical detents</b>. Unlike spring-return valves, this valve remains in its last commanded position when both solenoids are de-energized. As a result, the hydraulic cylinder also remains in its last position until the PLC energizes the opposite solenoid to change the direction of motion. 
+          </div>
+
+
+        </div>
+      </div>
+
 
 
      
@@ -121,7 +182,7 @@
              <a href="../assets/images/project_machine/gemma mc.svg"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="MASTER GRAFCET (GEMMA)">
               <img src="../assets/images/project_machine/gemma mc.svg" class="gallery-image">
              </a>
             </div>
@@ -138,7 +199,7 @@
              <a href="../assets/images/project_machine/auto mode mc.svg"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="AUTO MODE GRAFCET">
               <img src="../assets/images/project_machine/auto mode mc.svg" class="gallery-image">
              </a>
             </div>
@@ -155,7 +216,7 @@
              <a href="../assets/images/project_machine/manual mode mc.svg"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="MANUAL MODE GRAFCET">
               <img src="../assets/images/project_machine/manual mode mc.svg" class="gallery-image">
              </a>
             </div>
@@ -176,56 +237,160 @@
         <div class="project-details-content">
 
 
-          <div class="body-text">  The project is organized using both Scan Programs and Subroutine Programs. Scan Programs execute every PLC scan, while Subroutine Programs are only executed when called using the ECALL instruction.
+          <div class="body-text">  The PLC program for the project was developed using Cimon's  programming environment, CICON. The project is organized using both Scan Programs and Subroutine Programs. Scan Programs execute every PLC scan, while Subroutine Programs are only executed when called using the  <font color="blue"> ECALL </font> instruction.
               </div>
 
        <div class="project-overview-image-container">
              <a href="../assets/images/project_machine/sbrt.png"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="Main Program callout of Subroutine Program">
               <img src="../assets/images/project_machine/sbrt.png" class="gallery-image">
              </a>
-              <span class="image-caption">Flow between Main Routine (Scan Program) and a Sub routine program.</span>
             </div>
+              <span class="image-caption">Flow between Main Routine (Scan Program) and a Sub routine program.</span>
 
               <div class="body-text">  I wanted to keep the logic for each operating mode completely separate and avoid logic from one mode bleeding into another. Rather than mixing the Automatic and Manual logic in a single Scan Program, where both would be evaluated every PLC cycle, each operating mode is implemented in its own subroutine. This keeps the code easier to debug and modify, while also preventing logic from one mode from interfering with another.
               </div>
 
-    <div class="body-text">  One important characteristic of Cimon subroutines is that variables and outputs retain their last state when a subroutine is no longer being called. Because of this, switching between operating modes requires resetting any internal flags, latches, and memory bits that should not carry over. To handle this, I implemented a dedicated reset subroutine that clears the program state whenever the machine changes modes or recovers from an emergency stop.
+    <div class="body-text">  One important characteristic of CIMON subroutines is that variables and outputs retain their last state when a subroutine is no longer being called. Because of this, switching between operating modes requires resetting any internal flags, latches, and memory bits that should not carry over. To handle this, I implemented a dedicated reset subroutine that clears the program state whenever the machine changes modes or recovers from an emergency stop.
               </div>
 
               <div class="project-overview-image-container">
              <a href="../assets/images/project_machine/project_window.png"
    class="glightbox"
    data-gallery="gallery"
-   data-title="System Architecture Overview">
+   data-title="Programs in the Project Window">
               <img src="../assets/images/project_machine/project_window.png" class="gallery-image">
              </a>
-              <span class="image-caption">Project window of CICON, showcasing the programs that make up the PLC program.</span>
             </div>
+<span class="image-caption">Project window of CICON, showcasing the programs that make up the PLC program.</span>
+
 
           <div class="body-text">The project is organized as follows:
             <ul>
-            <li>Pgm_Main : Acts as the program manager. It reads the selector switch and push buttons, determines the current operating mode, handles emergency and restart conditions, and calls the appropriate subroutine (Automatic, Manual, or Reset).</li>
+            <li><font color="blue">Pgm_Main :</font> Acts as the program manager. It reads the selector switch and push buttons, determines the current operating mode, handles emergency and restart conditions, and calls the appropriate subroutine (Automatic, Manual, or Reset).</li>
             
-            <li>SBRT1 : Contains the Automatic Mode control logic.</li>
+            <li><font color="blue">SBRT1 : </font> the Automatic Mode control logic.</li>
 
-            <li>SBRT2 : Contains the Manual Mode control logic. </li>
+            <li><font color="blue">SBRT2 : </font> the Manual Mode control logic. </li>
 
-            <li> SBRT3 : Reset subroutine that clears all internal flags and latched states, ensuring the program starts from a clean state after a mode change or emergency stop. </li>
+            <li> <font color="blue">SBRT3 : </font> subroutine that clears all internal flags and latched states, ensuring the program starts from a clean state after a mode change or emergency stop. </li>
            
-            <li>Pgm_Saidas : Responsible for driving the physical outputs. The operating mode subroutines only set internal flags, while this program translates those flags into PLC output commands.</li>
+            <li><font color="blue">Pgm_Saidas :</font> Responsible for driving the physical outputs. The operating mode subroutines only set internal flags, while this program translates those flags into PLC output commands.</li>
           </ul>
           </div>
 
-             <div class="body-text">Since Pgm_Main and Pgm_Saidas are Scan Programs, they execute during every PLC scan. The mode-specific subroutines are only executed when explicitly called, keeping the control logic modular and well isolated.
+             <div class="body-text">Since <b>Pgm_Main</b> and <b>Pgm_Saidas</b> are Scan Programs, they execute during every PLC scan. The mode-specific subroutines are only executed when explicitly called, keeping the control logic modular and well isolated.
              </div>
 
+ <div class="body-text">The following screenshots show the programmed ladder logic rungs. </div>
 
+
+ <!--Emergency Rungs-->
+        <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="subheader-text"></div>
+        <div class="project-gallery-content">
+       
+          
+            <div class="gallery-image-container half-width">
+      
+             <a href="../assets/images/project_machine/activate_emerg_mode.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Emergency Mode Activation Rung.">
+              <img src="../assets/images/project_machine/activate_emerg_mode.png" class="gallery-image">
+  </a>
+              <span class="image-caption">Emergency Mode Activation Rung.</span>
+            </div>
+            
+            
+            
+            <div class="gallery-image-container half-width">
+               <a href="../assets/images/project_machine/leave_emerg_mode.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Emergency Mode Exit">
+              <img src="../assets/images/project_machine/leave_emerg_mode.png" class="gallery-image">
+               </a>
+              <span class="image-caption"> Emergency Mode Exit and Restart Interlock Rung.</span>
+            </div>
+
+
+
+               
+            <div class="gallery-image-container half-width">
+      
+             <a href="../assets/images/project_machine/leave_rst_nok_auto.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="RST_NOK Flag Clearance">
+              <img src="../assets/images/project_machine/leave_rst_nok_auto.png" class="gallery-image">
+  </a>
+              <span class="image-caption">RST_NOK Flag Clearance in the Auto Subroutine</span>
+            </div>
 
         </div>
       </div>
+
+
+
+
+
+<!-- Manual Mode Rungs-->
+
+<div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="subheader-text"></div>
+        <div class="project-gallery-content">
+       
+          
+            <div class="gallery-image-container half-width">
+      
+             <a href="../assets/images/project_machine/flag_manual_movemt.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Manual Mode Movement Flag">
+              <img src="../assets/images/project_machine/flag_manual_movemt.png" class="gallery-image">
+  </a>
+              <span class="image-caption">The press counter is initialized by the rising edge of the Start pushbutton and is reset when memory bit M26 (cylinder fully retracted) is set. </span>
+            </div>
+            
+            
+            
+            <div class="gallery-image-container half-width">
+               <a href="../assets/images/project_machine/av_manual.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Manual Mode Cylinder Extension Rung ">
+              <img src="../assets/images/project_machine/av_manual.png" class="gallery-image">
+               </a>
+              <span class="image-caption"> Cylinder Extension Logic (Counter = 1).</span>
+            </div>
+
+
+
+               
+            <div class="gallery-image-container half-width">
+      
+             <a href="../assets/images/project_machine/recuar_manual.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Manual Mode Cylinder Retraction Rung">
+              <img src="../assets/images/project_machine/recuar_manual.png" class="gallery-image">
+  </a>
+              <span class="image-caption">Cylinder Retraction Logic (Counter Done, Value = 2).</span>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
 
 
 
@@ -258,8 +423,13 @@
           <div class="body-text"> In this project, a 40 ms debounce timer was used to validate the inductive sensor signal before it was processed by the control logic. This helped mitigate potential false triggers caused by the machine's continuous vibration and electrical noise from the surrounding equipment. The following figures show the debounce implementation. 
           </div>
 <div id="image-centered">
-              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
-              <span class="image-caption">Prints of debouncing.</span>
+  <a href="../assets/images/project_machine/DEBOUNCE_INDUCTIVE_SENSORS.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="Inductive Sensor Debouncing">
+              <img src="../assets/images/project_machine/DEBOUNCE_INDUCTIVE_SENSORS.png" class="gallery-image">
+  </a>
+              <span class="image-caption">Rung where the sensor input is debounced.</span>
             </div>
         </div>
       </div>
