@@ -1,0 +1,328 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!--  
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/4539.jpg" />
+     <title>WELCOME TO INGRID'S PORTFOLIO</title>
+    <meta name="description" content="A page where I share some projects with the community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <a class="nav-title-link" href="../index.html">
+        
+        
+        <span class="nav-title">SYSTEMS, SYSTEMS AND MORE SYSTEMS</span>
+       
+
+        <a class="button" href="mailto:ingrid.lukoki@gmail.com">
+          <span class="button-text">Contact Me</span>
+        </a>
+      </a>
+    </div>
+
+
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+          <!-- 
+            TODO
+
+            - Change the 'main-title' text to the name of your project
+            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
+            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
+          -->
+        <div class="main-title"> Frozen Meat Guillotine Machine Retrofit</div>
+        <div class="body-text"> </div>
+  
+      <!---- <image class="project-header-image" src="../assets/images/desktop.jpeg">  -->
+
+   <div class="project-details-content">
+          <div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/machine_TBG480.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/machine_TBG480.png" class="gallery-image">
+             </a>
+            </div>
+
+      </div>
+
+    
+
+     
+
+
+<div id="project-details">
+        <div class="subheader-text">Context</div>
+        <div class="project-details-content">
+          <div class="body-text"> The client's frozen meat guillotine was controlled by an aging hardwired logic system that had become increasingly unreliable. Frequent failures caused significant production downtime, as operators often had to power-cycle the control panel to restore operation. In addition to replacing the aging electrical components, the client requested a new feature to stop the guillotine at a fixed position after each cycle. To meet these requirements while keeping costs low, an economical solution based on a Cimon CM2 PLC was implemented.
+          </div>
+        </div>
+      </div>
+
+
+<div id="project-details">
+        <div class="subheader-text">Machine Operation</div>
+        <div class="project-details-content">
+          <div class="body-text"> The machine cuts frozen meat into blocks using a hydraulically driven guillotine blade. From the operator's perspective, the process is straightforward:
+           <ol type="1">
+            <li>Press Start to begin the cutting cycle.</li>
+            <li>The hydraulic cylinder moves the blade up and down continuously.</li>
+            <li>The operator feeds frozen meat into the feed opening, where it slides down under its own weight to the cutting area.</li>
+            <li>The blade cuts the meat into blocks, which fall into a collection trolley below.</li>
+            <li>Once all the meat has been processed, the operator presses Stop to end the cycle.</li>
+            
+            </ul>
+          
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+     
+ <div id="project-details">
+        <div class="subheader-text">Control Logic</div>
+        <div class="project-details-content">
+          <div class="body-text"> To implement the PLC-based control system, a completely new electrical control panel was designed and built. The panel includes safety devices such as circuit breakers and fuses, a contactor with a DC coil energized by the PLC to control the hydraulic pump, a mode selector switch, push buttons for machine operation, and indicator lamps for system status. However, the focus of this page is on the PLC control logic rather than the electrical panel design.
+          </div>
+
+<div class="body-text"> To explain the control strategy, the following sections use GRAFCET diagrams to illustrate each operating step, the actions performed in those steps, and the conditions required to transition between them. 
+              </div>
+
+
+<div class="body-text"> The first diagram presents the master GRAFCET, which organizes the program into three operating modes: Automatic, Manual, and Emergency. Pressing the emergency stop immediately aborts the active sequence, regardless of the current operating mode. All PLC outputs are de-energized, causing the directional valve to remain in its last position and the hydraulic cylinder to stop exactly where it is. 
+              </div>
+
+
+  <div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/gemma mc.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/gemma mc.svg" class="gallery-image">
+             </a>
+            </div>
+
+
+
+
+<div class="body-text"> The next diagram shows the Automatic Mode sequence. In this mode, the cylinder continuously retracts and extends, allowing the guillotine to perform the cutting cycle. If the operator presses Stop, the machine does not stop immediately. Instead, a stop request is registered, and the current cycle is allowed to finish. Once the cylinder returns to its fully retracted position, the sequence stops and waits for the Start button to resume production. 
+              </div>
+          
+
+
+<div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/auto mode mc.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/auto mode mc.svg" class="gallery-image">
+             </a>
+            </div>
+
+
+
+<div class="body-text"> The Manual Mode sequence is intended primarily for maintenance and setup. In this mode, each press of the Start button commands the cylinder to move to the opposite position, either extending or retracting depending on its current state. As requested by the client, the hydraulic pump remains running while the machine is in Manual Mode and is only switched off when the operator presses Stop. 
+              </div>
+          
+              
+
+
+<div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/manual mode mc.svg"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/manual mode mc.svg" class="gallery-image">
+             </a>
+            </div>
+
+
+<div class="body-text"> A design requirement for both Automatic and Manual modes was that the machine should never stop with the cylinder extended. For this reason, pressing Stop is treated as a request to stop rather than an immediate command. The active sequence continues until the cylinder reaches its fully retracted position, where the machine safely then stops. 
+              </div>
+          
+
+        </div>
+      </div>
+
+
+
+
+      <div id="project-details">
+        <div class="subheader-text">Software Structure</div>
+        <div class="project-details-content">
+
+
+          <div class="body-text">  The project is organized using both Scan Programs and Subroutine Programs. Scan Programs execute every PLC scan, while Subroutine Programs are only executed when called using the ECALL instruction.
+              </div>
+
+
+              <div class="body-text">  I wanted to keep the logic for each operating mode completely separate and avoid logic from one mode bleeding into another. Rather than mixing the Automatic and Manual logic in a single Scan Program, where both would be evaluated every PLC cycle, each operating mode is implemented in its own subroutine. This keeps the code easier to debug and modify, while also preventing logic from one mode from interfering with another.
+              </div>
+
+    <div class="body-text">  One important characteristic of Cimon subroutines is that variables and outputs retain their last state when a subroutine is no longer being called. Because of this, switching between operating modes requires resetting any internal flags, latches, and memory bits that should not carry over. To handle this, I implemented a dedicated reset subroutine that clears the program state whenever the machine changes modes or recovers from an emergency stop.
+              </div>
+
+              <div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/project_window.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/project_window.png" class="gallery-image">
+             </a>
+            </div>
+
+          <div class="body-text">The project is organized as follows:
+            <ul>
+            <li>Pgm_Main : Acts as the program manager. It reads the selector switch and push buttons, determines the current operating mode, handles emergency and restart conditions, and calls the appropriate subroutine (Automatic, Manual, or Reset).</li>
+            
+            <li>SBRT1 : Contains the Automatic Mode control logic.</li>
+
+            <li>SBRT2 : Contains the Manual Mode control logic. </li>
+
+            <li> SBRT3 – Reset subroutine that clears all internal flags and latched states, ensuring the program starts from a clean state after a mode change or emergency stop. </li>
+           
+            <li>●	Pgm_Saidas – Responsible for driving the physical outputs. The operating mode subroutines only set internal flags, while this program translates those flags into PLC output commands.</li>
+          </ul>
+          </div>
+
+             <div class="body-text">Since Pgm_Main and Pgm_Saidas are Scan Programs, they execute during every PLC scan. The mode-specific subroutines are only executed when explicitly called, keeping the control logic modular and well isolated.
+             </div>
+
+
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+       <div id="project-details">
+        <div class="subheader-text">Highlights</div>
+        <div class="project-details-content">
+          <div class="body-text"> In essence, the standout part of this project was all connected to using a relay.
+            <ul>
+            <li>	I chose to use a relay because I didn’t want to power the buzzer directly from the microcontroller. Even though the buzzer used draws very low current, I believe in other applications, similar outputs might require higher current loads, so I preferred a relay-based approach in general.</li>
+            
+            <li>	Since I was using both a relay and a microcontroller, I needed a transistor to drive the relay coil, since the microcontroller pin alone couldn’t supply enough current. </li>
+
+            <li>	And since I was using a relay, a flyback diode was necessary to protect the circuit from voltage spikes when the relay coil switches off.  </li>
+            </ul>
+          </div>
+
+
+           <div id="image-centered">
+              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
+              <span class="image-caption">Schematics of the relay used in the project.</span>
+            </div>
+
+
+          <div class="body-text"> Relays are very common in industry, still found in many control panels today. So, it’s interesting to work with them because they act as a bridge between different control systems. Whether they are driven by a PLC transistor output or a small microcontroller, the principle stays the same: current flows through the coil to switch NO and NC contacts and control a load. The number and type of contacts or the coil voltage may change depending on the application, but the basic operation remains identical.
+              </div>
+          
+          <div class="body-text"> It also reminded me of a situation where a contactor coil was directly connected to a PLC transistor output and a voltage spike ended up burning that output. That’s why using a flyback diode across the coil is such a standard design practice, to protect the control elements. Funny enough, I also ran into issues with an inductive spike the first time I built the circuit (I damaged my ESP32), which is why this final version ended up being deployed on an Arduino &#128517.
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="subheader-text">Media Gallery</div>
+        <div class="project-gallery-content">
+            
+           
+
+            <div class="gallery-image-container">
+              <img src="../assets/images/project_1/Breadboard connections.jpeg" class="gallery-image">
+              <span class="image-caption">Physical Setup of Pedestrian Traffic Lights.</span>
+            </div>
+
+            <div>
+               <video width="800" height="440" controls autoplay>
+             <source src="https://ingrid-lk.github.io/ingridLKK.github.io/assets/images/project_1/project_video_with_sound.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+          </video>
+
+
+            <div>
+               <video width="780" height="440" controls>
+             <source src="../assets/images/project_1/Node_Red_Dashboard.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+          </video>
+            </div>
+           
+
+        </div>
+      </div>
+    </div>
+
+
+    <div id="project-details">
+        <div class="subheader-text">Improvements</div>
+        <div class="project-details-content">
+          <div class="body-text"> 
+            
+Serial communication has limited capabilities and is best suited for quick deployment and debugging purposes. To avoid local development, a modular solution could be implemented. Instead of using  XAMPP for database connection and running Node-RED locally, a containerized solution such as docker could be implemented, by that increasing the robustness of the system.
+
+          </div>
+
+
+          <div class="body-text"> 
+            
+Another major improvement would be creating a fault-finding mechanism. This would enable the system to detect hardware faults and trigger an alarm if a component is damaged or an intended transition does not occur. For instance, in the case of the LEDs, a photoresistor could be used to verify whether the LED output is functioning correctly. Alternatively, the code could include a validation routine to ensure that each transition aligns with the intended outcome.             
+          </div>
+
+
+
+    <!-- FOOTER -->
+    <div id="footer">
+     
+     
+      <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/ingrid-l-b6b52033a">
+        <image src="../assets/icons/linkedin-square-icon.svg" class="footer-icon"/>
+      </a>
+      
+
+      <a class="icon-link" href="mailto:ingrid.lukoki@gmail.com">
+        <image src="../assets/icons/mail.svg" class="footer-icon"/>
+      </a>
+    </div>
+
+	</body>
+</html>
