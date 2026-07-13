@@ -62,6 +62,7 @@
    data-title="System Architecture Overview">
               <img src="../assets/images/project_machine/machine_TBG480.png" class="gallery-image">
              </a>
+             <span class="image-caption">Schematics of the relay used in the project.</span>
             </div>
 
       </div>
@@ -178,6 +179,15 @@
           <div class="body-text">  The project is organized using both Scan Programs and Subroutine Programs. Scan Programs execute every PLC scan, while Subroutine Programs are only executed when called using the ECALL instruction.
               </div>
 
+       <div class="project-overview-image-container">
+             <a href="../assets/images/project_machine/sbrt.png"
+   class="glightbox"
+   data-gallery="gallery"
+   data-title="System Architecture Overview">
+              <img src="../assets/images/project_machine/sbrt.png" class="gallery-image">
+             </a>
+              <span class="image-caption">Flow between Main Routine (Scan Program) and a Sub routine program.</span>
+            </div>
 
               <div class="body-text">  I wanted to keep the logic for each operating mode completely separate and avoid logic from one mode bleeding into another. Rather than mixing the Automatic and Manual logic in a single Scan Program, where both would be evaluated every PLC cycle, each operating mode is implemented in its own subroutine. This keeps the code easier to debug and modify, while also preventing logic from one mode from interfering with another.
               </div>
@@ -192,6 +202,7 @@
    data-title="System Architecture Overview">
               <img src="../assets/images/project_machine/project_window.png" class="gallery-image">
              </a>
+              <span class="image-caption">Project window of CICON, showcasing the programs that make up the PLC program.</span>
             </div>
 
           <div class="body-text">The project is organized as follows:
@@ -202,9 +213,9 @@
 
             <li>SBRT2 : Contains the Manual Mode control logic. </li>
 
-            <li> SBRT3 – Reset subroutine that clears all internal flags and latched states, ensuring the program starts from a clean state after a mode change or emergency stop. </li>
+            <li> SBRT3 : Reset subroutine that clears all internal flags and latched states, ensuring the program starts from a clean state after a mode change or emergency stop. </li>
            
-            <li>●	Pgm_Saidas – Responsible for driving the physical outputs. The operating mode subroutines only set internal flags, while this program translates those flags into PLC output commands.</li>
+            <li>Pgm_Saidas : Responsible for driving the physical outputs. The operating mode subroutines only set internal flags, while this program translates those flags into PLC output commands.</li>
           </ul>
           </div>
 
@@ -212,10 +223,6 @@
              </div>
 
 
-           <div id="image-centered">
-              <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
-            </div>
 
         </div>
       </div>
@@ -228,85 +235,59 @@
 
 
        <div id="project-details">
-        <div class="subheader-text">Highlights</div>
+        <div class="subheader-text">Lessons Learned: Sensor Debouncing</div>
         <div class="project-details-content">
-          <div class="body-text"> In essence, the standout part of this project was all connected to using a relay.
-            <ul>
-            <li>	I chose to use a relay because I didn’t want to power the buzzer directly from the microcontroller. Even though the buzzer used draws very low current, I believe in other applications, similar outputs might require higher current loads, so I preferred a relay-based approach in general.</li>
-            
-            <li>	Since I was using both a relay and a microcontroller, I needed a transistor to drive the relay coil, since the microcontroller pin alone couldn’t supply enough current. </li>
-
-            <li>	And since I was using a relay, a flyback diode was necessary to protect the circuit from voltage spikes when the relay coil switches off.  </li>
-            </ul>
+          
+          <div class="body-text"> One lesson reinforced during this project was that raw PLC inputs should not always be used directly in the control logic. In a real industrial environment, input signals can become unstable for short periods due to electrical noise, vibration, mechanical contact bounce, or a sensor operating close to its switching point.
           </div>
 
 
-           <div id="image-centered">
+          <div class="body-text"> If these brief signal changes are processed as valid events, the PLC may react to transitions that were never intended. This can result in false triggers, incorrect counts, unstable machine behavior, intermittent faults, or outputs switching unexpectedly.
+          </div>
+
+
+
+          <div class="body-text"> A common way to avoid this is to debounce the input, allowing the PLC to verify that the signal has remained stable for a minimum amount of time before accepting it as valid. In practice, the control logic follows this sequence:
+          </div>
+
+
+
+          <div class="body-text"> <b>Raw Input → Debounce Logic → Validated Input → Control Logic</b>
+          </div>
+
+          <div class="body-text"> In this project, a 40 ms debounce timer was used to validate the inductive sensor signal before it was processed by the control logic. This helped mitigate potential false triggers caused by the machine's continuous vibration and electrical noise from the surrounding equipment. The following figures show the debounce implementation. 
+          </div>
+<div id="image-centered">
               <img src="../assets/images/project_1/relay_schematics.png" class="gallery-image">
-              <span class="image-caption">Schematics of the relay used in the project.</span>
+              <span class="image-caption">Prints of debouncing.</span>
             </div>
-
-
-          <div class="body-text"> Relays are very common in industry, still found in many control panels today. So, it’s interesting to work with them because they act as a bridge between different control systems. Whether they are driven by a PLC transistor output or a small microcontroller, the principle stays the same: current flows through the coil to switch NO and NC contacts and control a load. The number and type of contacts or the coil voltage may change depending on the application, but the basic operation remains identical.
-              </div>
-          
-          <div class="body-text"> It also reminded me of a situation where a contactor coil was directly connected to a PLC transistor output and a voltage spike ended up burning that output. That’s why using a flyback diode across the coil is such a standard design practice, to protect the control elements. Funny enough, I also ran into issues with an inductive spike the first time I built the circuit (I damaged my ESP32), which is why this final version ended up being deployed on an Arduino &#128517.
-          </div>
-          
         </div>
       </div>
 
 
 
 
-
-      <!-- IMAGE GALLERY -->
-      <div id="project-gallery">
-        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text">Media Gallery</div>
-        <div class="project-gallery-content">
-            
-           
-
-            <div class="gallery-image-container">
-              <img src="../assets/images/project_1/Breadboard connections.jpeg" class="gallery-image">
-              <span class="image-caption">Physical Setup of Pedestrian Traffic Lights.</span>
-            </div>
-
-            <div>
-               <video width="800" height="440" controls autoplay>
-             <source src="https://ingrid-lk.github.io/ingridLKK.github.io/assets/images/project_1/project_video_with_sound.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-          </video>
-
-
-            <div>
-               <video width="780" height="440" controls>
-             <source src="../assets/images/project_1/Node_Red_Dashboard.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-          </video>
-            </div>
-           
-
-        </div>
-      </div>
-    </div>
-
-
-    <div id="project-details">
+       <div id="project-details">
         <div class="subheader-text">Improvements</div>
         <div class="project-details-content">
-          <div class="body-text"> 
-            
-Serial communication has limited capabilities and is best suited for quick deployment and debugging purposes. To avoid local development, a modular solution could be implemented. Instead of using  XAMPP for database connection and running Node-RED locally, a containerized solution such as docker could be implemented, by that increasing the robustness of the system.
-
+          <div class="body-text"> One improvement would be to implement cylinder motion timeout detection to prevent the control sequence from becoming indefinitely blocked. The current program assumes that every commanded cylinder movement completes successfully. If, for any reason, the cylinder fails to reach its expected position, the rung remains waiting for the corresponding transition and the sequence cannot continue.
           </div>
 
 
-          <div class="body-text"> 
-            
-Another major improvement would be creating a fault-finding mechanism. This would enable the system to detect hardware faults and trigger an alarm if a component is damaged or an intended transition does not occur. For instance, in the case of the LEDs, a photoresistor could be used to verify whether the LED output is functioning correctly. Alternatively, the code could include a validation routine to ensure that each transition aligns with the intended outcome.             
+          <div class="body-text"> A motion timeout could be started whenever a cylinder movement is commanded. If the expected position sensor is not reached within the maximum allowable travel time, the PLC would declare a fault. Possible causes include a stuck directional valve, a failed solenoid, low hydraulic pressure, a jammed cylinder, mechanical obstruction, pump cavitation, cold hydraulic oil, or a faulty position sensor.
           </div>
+
+
+
+          <div class="body-text"> Once a timeout is detected, the program could either place the machine in a fault state and alert the operator (for this simple machine without display we could blink the red led lamp used to signal that emergency stop was pressed) or attempt a limited automatic recovery before stopping the machine safely. This would make the control system more robust and prevent it from remaining indefinitely in a waiting step.
+          </div>
+
+
+        </div>
+      </div>
+
+
+      
 
 
 
